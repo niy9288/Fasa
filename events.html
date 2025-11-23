@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FASA GAZELLES — Events</title>
+  <meta name="description" content="Explore upcoming events: story hours, art workshops, movie nights, and more." />
+  <link rel="icon" href="assets/favicon.ico" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container bar">
+      <a class="logo" href="index.html" aria-label="FASA GAZELLES Home">
+        <img src="images/logo.png" alt="FASA GAZELLES Logo" style="width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,var(--color-primary),var(--color-olive));position:relative;box-shadow:var(--shadow-sm)">
+        <span>FASA GAZELLES</span>
+      </a>
+      <nav class="nav" aria-label="Primary Navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="the-nook.html">The Nook</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="events.html" aria-current="page">Events</a>
+        <a href="visit.html">Visit</a>
+        <a href="blog.html">Blog</a>
+      </nav>
+      <div style="display:flex;align-items:center;">
+        <div class="social">
+          <a href="https://www.youtube.com/channel/UCONPnke6PSDyC-CXcS2So1Q" aria-label="Youtube">📷</a>
+          <a href="https://www.tiktok.com/@mukazibera2000?_r=1&_t=ZM-91dodLVE6UG" aria-label="TikTok">👍</a>
+        </div>
+        <a class="cta" href="visit.html#book">Book a Visit</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section>
+      <div class="section-title">
+        <h2>Events</h2>
+        <div>
+          <select id="category-filter" style="padding:10px;border-radius:8px;border:1px solid #ccd">
+            <option value="">All Categories</option>
+            <option>Movie Nights</option>
+            <option>Story Hours</option>
+            <option>Art Workshops</option>
+            <option>Educational Sessions</option>
+            <option>Special Events</option>
+          </select>
+        </div>
+      </div>
+      <div id="calendar" class="card" style="overflow:auto">
+        <div class="muted">Monthly calendar (placeholder). Use list view below.</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <h2>Upcoming (Coming Soon)</h2>
+        <div>
+          <label class="sr-only" for="age-filter">Age</label>
+          <select id="age-filter" style="padding:10px;border-radius:8px;border:1px solid #ccd">
+            <option value="">All Ages</option>
+            <option value="3-6">3-6</option>
+            <option value="6-12">6-12</option>
+            <option value="7+">7+</option>
+            <option value="Adults">Adults</option>
+            <option value="All ages">All ages</option>
+          </select>
+        </div>
+      </div>
+      <div id="events-list" class="cards"></div>
+    </section>
+  </main>
+
+  <div id="rsvp-modal" style="position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;padding:16px">
+    <div style="background:#fff;border-radius:14px;box-shadow:var(--shadow-lg);max-width:520px;width:100%;padding:22px">
+      <h3 style="margin-top:0">RSVP</h3>
+      <form id="rsvp-form">
+        <input type="hidden" id="rsvp-event-id" />
+        <div style="display:grid;gap:10px">
+          <input required id="rsvp-name" placeholder="Your name" style="padding:10px;border-radius:8px;border:1px solid #ccd" />
+          <input required type="email" id="rsvp-email" placeholder="Email" style="padding:10px;border-radius:8px;border:1px solid #ccd" />
+          <input type="number" min="1" value="1" id="rsvp-count" placeholder="# attending" style="padding:10px;border-radius:8px;border:1px solid #ccd" />
+        </div>
+        <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:14px">
+          <button type="button" id="rsvp-cancel" class="pill">Cancel</button>
+          <button class="cta" type="submit">Submit RSVP</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container wrap">
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="the-nook.html">The Nook</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Attend</h4>
+        <ul>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="visit.html#book">Book a Visit</a></li>
+          <li><a href="visit.html#pricing">Pricing & Membership</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Stay in touch</h4>
+        <form id="newsletter-form">
+          <label class="sr-only" for="newsletter-email">Email</label>
+          <input id="newsletter-email" type="email" required placeholder="Email address" style="padding:10px;border-radius:8px;border:1px solid #ccd;width:100%;margin-bottom:8px" />
+          <button class="cta" type="submit">Get updates on new events!</button>
+        </form>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p><a href="mailto:fasagazelles@gmail.com">fasagazelles@gmail.com</a></p>
+        <p><a href="tel:+250788302476">Call: +250 788 302 476</a></p>
+        <p>Mon–Sat: 10am–6pm</p>
+        <div class="social">
+          <a href="https://www.youtube.com/channel/UCONPnke6PSDyC-CXcS2So1Q" aria-label="Youtube">📷</a>
+          <a href="https://www.tiktok.com/@mukazibera2000?_r=1&_t=ZM-91dodLVE6UG" aria-label="TikTok">👍</a>
+        </div>
+      </div>
+    </div>
+    <div class="container copyright">© <span id="year"></span> FASA GAZELLES. All rights reserved.</div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/events.js"></script>
+</body>
+<html>
+

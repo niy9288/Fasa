@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FASA GAZELLES — Visit</title>
+  <meta name="description" content="Location, hours, booking requests, and membership options." />
+  <link rel="icon" href="assets/favicon.ico" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container bar">
+        <a class="logo" href="index.html" aria-label="FASA GAZELLES Home">
+          <img src="images/logo.png" alt="FASA GAZELLES Logo" style="width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,var(--color-primary),var(--color-olive));position:relative;box-shadow:var(--shadow-sm)">
+          <span>FASA GAZELLES</span>
+      </a>
+      <nav class="nav" aria-label="Primary Navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="the-nook.html">The Nook</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="events.html">Events</a>
+        <a href="visit.html" aria-current="page">Visit</a>
+        <a href="blog.html">Blog</a>
+      </nav>
+      <div style="display:flex;align-items:center;">
+        <div class="social">
+          <a href="https://www.youtube.com/channel/UCONPnke6PSDyC-CXcS2So1Q" aria-label="Youtube">📷</a>
+          <a href="https://www.tiktok.com/@mukazibera2000?_r=1&_t=ZM-91dodLVE6UG" aria-label="TikTok">👍</a>
+        </div>
+        <a class="cta" href="#book">Book a Visit</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section>
+      <div class="section-title"><h2>Location & Hours</h2></div>
+      <div class="card" style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <div>
+          <div style="border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm);aspect-ratio:16/9;background:#e8efe9;display:grid;place-items:center">
+            <iframe title="Map" src="https://www.google.com/maps/embed?pb=!4v1760197071674!6m8!1m7!1sBPaFSY_T_u5qQkT0EDx-kQ!2m2!1d-1.958240272027455!2d30.13272424288133!3f130.01877434239753!4f7.600240794970645!5f0.4000000000000002" width="600" height="450" style="width:100%;height:100%;border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+        <div>
+          <p><strong>Address:</strong> 128 KK 5 Avenue Kigali, Kigali City</p>
+          <p><strong>Hours:</strong> Mon–Sat 10am–6pm, Sun closed. Special events posted on Events page.</p>
+          <p class="muted">Seasonal schedule may vary during holidays and school breaks.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="book">
+      <div class="section-title"><h2>Booking</h2></div>
+      <div class="cards">
+        <div class="card">
+          <h3>Event RSVP</h3>
+          <p class="muted">Reserve your spot for upcoming events.</p>
+          <a class="cta" href="events.html">Go to Events</a>
+        </div>
+        <div class="card">
+          <h3>Private Session</h3>
+          <p class="muted">Request a private reading or art session (it is free of charge).</p>
+          <form id="private-form" style="display:grid;gap:10px">
+            <input required name="name" placeholder="Name" style="padding:10px;border-radius:8px;border:1px solid #ccd" />
+            <input required type="email" name="email" placeholder="Email" style="padding:10px;border-radius:8px;border:1px solid #ccd" />
+            <input type="date" name="date" style="padding:10px;border-radius:8px;border:1px solid #ccd" />
+            <button class="cta" type="submit">Send request</button>
+          </form>
+        </div>
+        <div class="card">
+          <h3>Group Trip</h3>
+          <p class="muted">Plan a class visit with tailored activities.</p>
+          <form id="fieldtrip-form" style="display:grid;gap:10px">
+            <input required name="school" placeholder="School" style="padding:10px;border-radius:8px;border:1px solid #ccd" />
+            <input required type="email" name="email" placeholder="Contact email" style="padding:10px;border-radius:8px;border:1px solid #ccd" />
+            <input type="number" min="5" max="60" name="students" placeholder="# students" style="padding:10px;border-radius:8px;border:1px solid #ccd" />
+            <button class="cta" type="submit">Request info</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <div class="section-title"><h2>Pricing & Membership</h2></div>
+      <div class="cards">
+        <div class="card"><h3>Support</h3><p class="muted">MTN code: 000059 (Jeunesse du futur)</p></div> 
+        <div class="card"><h3>Support</h3><p class="muted">PayPal: @MarieAMukazibera</p></div> 
+      </div>
+      <p class="muted">Donations support new books, materials, and community programs.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container wrap">
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="the-nook.html">The Nook</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Attend</h4>
+        <ul>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="#book">Book a Visit</a></li>
+          <li><a href="#pricing">Pricing & Membership</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Stay in touch</h4>
+        <form id="newsletter-form">
+          <label class="sr-only" for="newsletter-email">Email</label>
+          <input id="newsletter-email" type="email" required placeholder="Email address" style="padding:10px;border-radius:8px;border:1px solid #ccd;width:100%;margin-bottom:8px" />
+          <button class="cta" type="submit">Get updates on new events!</button>
+        </form>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p><a href="mailto:fasagazelles@gmail.com">fasagazelles@gmail.com</a></p>
+        <p><a href="tel:+250788302476">Call: +250 788 302 476</a></p>
+        <p>Mon–Sat: 10am–6pm</p>
+        <div class="social">
+          <a href="https://www.youtube.com/channel/UCONPnke6PSDyC-CXcS2So1Q" aria-label="Youtube">📷</a>
+          <a href="https://www.tiktok.com/@mukazibera2000?_r=1&_t=ZM-91dodLVE6UG" aria-label="TikTok">👍</a>
+        </div>
+      </div>
+    </div>
+    <div class="container copyright">© <span id="year"></span> FASA GAZELLES. All rights reserved.</div>
+  </footer>
+
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="js/emailjs-config.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Initialize EmailJS
+    (function() {
+      if (typeof emailjs !== 'undefined' && EMAILJS_CONFIG && EMAILJS_CONFIG.publicKey !== 'YOUR_PUBLIC_KEY_HERE') {
+        emailjs.init(EMAILJS_CONFIG.publicKey);
+      }
+    })();
+
+    // Private Session Form Handler
+    document.getElementById('private-form')?.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const form = this;
+      const submitButton = form.querySelector('button[type="submit"]');
+      const originalText = submitButton.textContent;
+      
+      // Disable button and show loading state
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sending...';
+      
+      const formData = {
+        name: form.querySelector('input[name="name"]').value,
+        email: form.querySelector('input[name="email"]').value,
+        date: form.querySelector('input[name="date"]').value || 'Not specified',
+        to_email: EMAILJS_CONFIG.recipientEmail
+      };
+      
+      // Check if EmailJS is configured
+      if (typeof emailjs === 'undefined' || !EMAILJS_CONFIG || EMAILJS_CONFIG.publicKey === 'YOUR_PUBLIC_KEY_HERE') {
+        alert('Email service not configured. Please set up EmailJS credentials in js/emailjs-config.js');
+        submitButton.disabled = false;
+        submitButton.textContent = originalText;
+        return;
+      }
+      
+      emailjs.send(
+        EMAILJS_CONFIG.serviceId,
+        EMAILJS_CONFIG.templates.privateSession,
+        formData
+      ).then(function() {
+        alert('Thanks! We\'ll email you to schedule a private session.');
+        form.reset();
+        submitButton.disabled = false;
+        submitButton.textContent = originalText;
+      }, function(error) {
+        alert('Sorry, there was an error sending your request. Please try again or contact us directly at ' + EMAILJS_CONFIG.recipientEmail);
+        console.error('EmailJS error:', error);
+        submitButton.disabled = false;
+        submitButton.textContent = originalText;
+      });
+    });
+
+    // Field Trip Form Handler
+    document.getElementById('fieldtrip-form')?.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const form = this;
+      const submitButton = form.querySelector('button[type="submit"]');
+      const originalText = submitButton.textContent;
+      
+      // Disable button and show loading state
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sending...';
+      
+      const formData = {
+        school: form.querySelector('input[name="school"]').value,
+        email: form.querySelector('input[name="email"]').value,
+        students: form.querySelector('input[name="students"]').value || 'Not specified',
+        to_email: EMAILJS_CONFIG.recipientEmail
+      };
+      
+      // Check if EmailJS is configured
+      if (typeof emailjs === 'undefined' || !EMAILJS_CONFIG || EMAILJS_CONFIG.publicKey === 'YOUR_PUBLIC_KEY_HERE') {
+        alert('Email service not configured. Please set up EmailJS credentials in js/emailjs-config.js');
+        submitButton.disabled = false;
+        submitButton.textContent = originalText;
+        return;
+      }
+      
+      emailjs.send(
+        EMAILJS_CONFIG.serviceId,
+        EMAILJS_CONFIG.templates.fieldTrip,
+        formData
+      ).then(function() {
+        alert('Thanks! We\'ll follow up with field trip details.');
+        form.reset();
+        submitButton.disabled = false;
+        submitButton.textContent = originalText;
+      }, function(error) {
+        alert('Sorry, there was an error sending your request. Please try again or contact us directly at ' + EMAILJS_CONFIG.recipientEmail);
+        console.error('EmailJS error:', error);
+        submitButton.disabled = false;
+        submitButton.textContent = originalText;
+      });
+    });
+  </script>
+</body>
+</html>
+

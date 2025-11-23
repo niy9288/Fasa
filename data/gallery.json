@@ -1,0 +1,13 @@
+[
+  { "id":"img1","title":"Library View","artist":"The Palm Tree","category":"Current Exhibits","medium":"Photography","story":"A beautiful view of our library space.","image":"images/IMG-20251011-WA0030.png" },
+  { "id":"img2","title":"Creative Corner","artist":"The Palm Tree","category":"Current Exhibits","medium":"Photography","story":"An inspiring space for creativity.","image":"images/IMG-20251011-WA0026.png" },
+  { "id":"img3","title":"Community Space","artist":"The Palm Tree","category":"Current Exhibits","medium":"Photography","story":"Welcoming our community members.","image":"images/IMG-20251011-WA0028.png" },
+  { "id":"img4","title":"Reading Nook","artist":"The Palm Tree","category":"Current Exhibits","medium":"Photography","story":"A cozy spot for reading and learning.","image":"images/IMG-20251011-WA0029.png" },
+  { "id":"img5","title":"Abidjan Wax Print Dress","artist":"Curated Selection","category":"Permanent Collection","medium":"Photography","story":"Showcasing local art collections.","image":"images/IMG-20251011-WA0036.png" },
+  { "id":"img6","title":"Abidjan Wax Print Dress","artist":"Curated Selection","category":"Current Exhibits","medium":"Photography","story":"Where creativity comes alive.","image":"images/IMG-20251011-WA0037.png" },
+  { "id":"img7","title":"Abidjan Wax Print Dress","artist":"Curated Selection","category":"Current Exhibits","medium":"Photography","story":"Capturing moments from our events.","image":"images/IMG-20251011-WA0038.png" },
+  { "id":"clothes1","title":"Abidjan Wax Print Dress","artist":"Curated Selection","category":"Clothes","medium":"Textile","story":"Bold wax print dress sourced from Abidjan.","image":"images/IMG-20251011-WA0039.png" },
+  { "id":"clothes2","title":"Handwoven Boubou (Abidjan)","artist":"Curated Selection","category":"Clothes","medium":"Textile","story":"Elegant handwoven boubou celebrating West African craftsmanship.","image":"images/IMG-20251011-WA0042.png" }
+]
+
+

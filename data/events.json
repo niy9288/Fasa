@@ -1,0 +1,63 @@
+[
+  {
+    "id": "movie-night-1",
+    "title": "Movie Night: The Secret Life of Trees",
+    "category": "Movie Nights",
+    "start": "2026-01-20T17:00:00",
+    "age": "7+",
+    "materials": "None",
+    "outcomes": ["Environmental awareness", "Observation skills"],
+    "description": "An engaging documentary exploring how trees communicate and support ecosystems."
+  },
+  {
+    "id": "story-hour-fox",
+    "title": "Story Hour: The Clever Little Fox",
+    "category": "Story Hours",
+    "start": "2026-12-05T10:00:00",
+    "age": "3-6",
+    "materials": "None",
+    "outcomes": ["Listening", "Imagination"],
+    "description": "A lively storytelling session with sound effects and participation."
+  },
+  {
+    "id": "art-workshop-watercolor",
+    "title": "Art Workshop: Watercolor Gardens",
+    "category": "Art Workshops",
+    "start": "2026-11-22T14:00:00",
+    "age": "6-12",
+    "materials": "Watercolors provided",
+    "outcomes": ["Color theory", "Brush control"],
+    "description": "Learn watercolor basics and paint a sunny garden scene."
+  },
+  {
+    "id": "edu-session-reading-strategies",
+    "title": "Educational Session: Reading Strategies for Parents",
+    "category": "Educational Sessions",
+    "start": "2026-11-15T16:00:00",
+    "age": "Adults",
+    "materials": "Notebook",
+    "outcomes": ["Home reading routines", "Phonics tips"],
+    "description": "Practical, evidence-based reading strategies to support young readers."
+  },
+  {
+    "id": "special-solstice-fest",
+    "title": "Special Event: Solstice Fest",
+    "category": "Special Events",
+    "start": "2026-12-21T12:00:00",
+    "age": "All ages",
+    "materials": "Optional: picnic mat",
+    "outcomes": ["Community building", "Multisensory play"],
+    "description": "Outdoor crafts, story circles, and music to celebrate the solstice."
+  },
+  {
+    "id": "movie-night-2",
+    "title": "Movie Night: Little Inventors",
+    "category": "Movie Nights",
+    "start": "2027-02-14T18:00:00",
+    "age": "7+",
+    "materials": "None",
+    "outcomes": ["Creativity", "Curiosity"],
+    "description": "Animated shorts about young problem solvers and their bright ideas."
+  }
+]
+

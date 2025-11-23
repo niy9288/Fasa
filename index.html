@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FASA GAZELLES — Home</title>
+  <meta name="description" content="FASA GAZELLES. Community hub for reading, art, and educational events." />
+  <link rel="icon" href="assets/favicon.ico" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container bar">
+      <a class="logo" href="index.html" aria-label="FAZA GAZELLES Home">
+        <img src="images/logo.png" alt="FASA GAZELLES Logo"
+          style="width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,var(--color-primary),var(--color-olive));position:relative;box-shadow:var(--shadow-sm)">
+        <span>FASA GAZELLES</span>
+      </a>
+      <nav class="nav" aria-label="Primary Navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="the-nook.html">The Nook</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="events.html">Events</a>
+        <a href="visit.html">Visit</a>
+        <a href="blog.html">Blog</a>
+      </nav>
+      <div style="display:flex;align-items:center;">
+        <div class="social" aria-label="Social links">
+          <a href="https://www.youtube.com/channel/UCONPnke6PSDyC-CXcS2So1Q" aria-label="Youtube">
+            <span class="sr-only">Youtube</span>📷
+          </a>
+          <a href="https://www.tiktok.com/@mukazibera2000?_r=1&_t=ZM-91dodLVE6UG" aria-label="TikTok">
+            <span class="sr-only">TikTok</span>👍
+          </a>
+        </div>
+        <a class="cta" href="visit.html#book">Book a Visit</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="overlay"></div>
+      <div class="content container">
+        <div>
+          <h1>Where Stories, Fashion and Athletics Meet Under a Palm Tree</h1>
+          <p class="tag">A playful, elegant, inspiring nook for curious minds</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="section-title">
+        <h2>Featured</h2>
+        <span class="pill">This week</span>
+      </div>
+      <div class="cards">
+        <article class="card" id="next-event-card">
+          <h3>Upcoming Events</h3>
+          <p class="muted">Starts in <span id="countdown">--:--:--</span></p>
+          <div id="next-event-summary"></div>
+        </article>
+        <article class="card">
+          <h3>Artist of the Month</h3>
+          <div id="artist-spotlight">Yves Rugamba (A.K.A. RAGVAX)</div>
+        </article>
+        <article class="card">
+          <h3>Clothes from Abidjan</h3>
+          <p class="muted">We now offer a curated selection of vibrant, handpicked clothing from Abidjan alongside our
+            love for books. Visit the Gallery to preview the styles.</p>
+          <p><a class="pill" href="gallery.html">Explore Clothes</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="section-title">
+        <h2>What Visitors Say</h2>
+      </div>
+      <div class="carousel">
+        <div class="carousel-track" id="testimonials"></div>
+        <div class="controls"></div>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="section-title">
+        <h2>Quick Stats</h2>
+      </div>
+      <div class="stats">
+        <div class="stat">
+          <div class="num">100+</div>
+          <div>Books</div>
+        </div>
+        <div class="stat">
+          <div class="num">10+</div>
+          <div>Events Hosted</div>
+        </div>
+        <div class="stat">
+          <div class="num">20+</div>
+          <div>Young Minds Inspired</div>
+        </div>
+        <div class="stat">
+          <div class="num">2+</div>
+          <div>Local Artists Showcased</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container wrap">
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="the-nook.html">The Nook</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Attend</h4>
+        <ul>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="visit.html#book">Book a Visit</a></li>
+          <li><a href="visit.html#pricing">Pricing & Membership</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Stay in touch</h4>
+        <form id="newsletter-form">
+          <label class="sr-only" for="newsletter-email">Email</label>
+          <input id="newsletter-email" type="email" required placeholder="Email address"
+            style="padding:10px;border-radius:8px;border:1px solid #ccd;width:100%;margin-bottom:8px" />
+          <button class="cta" type="submit">Get updates on new events!</button>
+        </form>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p><a href="mailto:fasagazelles@gmail.com">fasagazelles@gmail.com</a></p>
+        <p><a href="tel:+250788302476">Call: +250 788 302 476</a></p>
+        <p>Mon–Sat: 10am–6pm</p>
+        <div class="social">
+          <a href="https://www.youtube.com/channel/UCONPnke6PSDyC-CXcS2So1Q" aria-label="Youtube">📷</a>
+          <a href="https://www.tiktok.com/@mukazibera2000?_r=1&_t=ZM-91dodLVE6UG" aria-label="TikTok">👍</a>
+        </div>
+      </div>
+    </div>
+    <div class="container copyright">© <span id="year"></span> FASA GAZELLES. All rights reserved.</div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/events.js"></script>
+</body>
+
+</html>

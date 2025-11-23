@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FASA GAZELLES — The Nook</title>
+  <meta name="description" content="Interactive tour of our space: reading area, art corner, movie space, and garden." />
+  <link rel="icon" href="assets/favicon.ico" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .tour{position:relative;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm);background:#fff}
+    .hotspot{position:absolute;width:18px;height:18px;border-radius:50%;background:var(--color-accent);box-shadow:0 0 0 6px rgba(255,215,0,.25);cursor:pointer}
+    .tour video{width:100%;max-width:600px;height:350px;object-fit:cover;display:block;margin:0 auto}
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;padding:16px}
+    .modal .box{background:#fff;border-radius:14px;box-shadow:var(--shadow-lg);max-width:640px;width:100%;padding:20px}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container bar">
+      <a class="logo" href="index.html" aria-label="FASA GAZELLES Home">
+        <img src="images/logo.png" alt="FASA GAZELLES Logo" style="width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,var(--color-primary),var(--color-olive));position:relative;box-shadow:var(--shadow-sm)">
+        <span>FASA GAZELLES</span>
+      </a>
+      <nav class="nav" aria-label="Primary Navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="the-nook.html" aria-current="page">The Nook</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="events.html">Events</a>
+        <a href="visit.html">Visit</a>
+        <a href="blog.html">Blog</a>
+      </nav>
+      <div style="display:flex;align-items:center;">
+        <div class="social">
+          <a href="https://www.youtube.com/channel/UCONPnke6PSDyC-CXcS2So1Q" aria-label="Youtube">📷</a>
+          <a href="https://www.tiktok.com/@mukazibera2000?_r=1&_t=ZM-91dodLVE6UG" aria-label="TikTok">👍</a>
+        </div>
+        <a class="cta" href="visit.html#book">Book a Visit</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section>
+      <div class="section-title"><h2>Interactive Space Tour</h2></div>
+      <div class="tour">
+        <video autoplay muted loop playsinline controls preload="metadata" aria-label="Panoramic view of The Nook">
+          <source src="images/video.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title"><h2>Amenities</h2></div>
+      <div class="cards">
+        <div class="card"><h3>Books</h3><p class="muted">500+ titles across picture books, early readers, and nonfiction.</p></div>
+        <div class="card"><h3>Art Supplies</h3><p class="muted">Watercolors, pastels, collage, clay, and more.</p></div>
+        <div class="card"><h3>Comfort</h3><p class="muted">Soft pillows, warm lighting, and quiet corners.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title"><h2>Rules & Guidelines</h2></div>
+      <div class="cards">
+        <div class="card"><h3>Be Kind</h3><p class="muted">Share materials and encourage others.</p></div>
+        <div class="card"><h3>Be Curious</h3><p class="muted">Try new things and ask questions.</p></div>
+        <div class="card"><h3>Be Tidy</h3><p class="muted">Return books and supplies when done.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal" id="spot-modal">
+    <div class="box">
+      <h3 id="spot-title" style="margin-top:0"></h3>
+      <img id="spot-image" alt="" style="width:100%;height:auto;border-radius:10px;box-shadow:var(--shadow-sm)" />
+      <p id="spot-desc" class="muted"></p>
+      <div style="text-align:right"><button class="pill" id="spot-close">Close</button></div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container wrap">
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="the-nook.html">The Nook</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Attend</h4>
+        <ul>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="visit.html#book">Book a Visit</a></li>
+          <li><a href="visit.html#pricing">Pricing & Membership</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Stay in touch</h4>
+        <form id="newsletter-form">
+          <label class="sr-only" for="newsletter-email">Email</label>
+          <input id="newsletter-email" type="email" required placeholder="Email address" style="padding:10px;border-radius:8px;border:1px solid #ccd;width:100%;margin-bottom:8px" />
+          <button class="cta" type="submit">Get updates on new events!</button>
+        </form>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p><a href="mailto:fasagazelles@gmail.com">fasagazelles@gmail.com</a></p>
+        <p><a href="tel:+250788302476">Call: +250 788 302 476</a></p>
+        <p>Mon–Sat: 10am–6pm</p>
+        <div class="social">
+          <a href="https://www.youtube.com/channel/UCONPnke6PSDyC-CXcS2So1Q" aria-label="Youtube">📷</a>
+          <a href="https://www.tiktok.com/@mukazibera2000?_r=1&_t=ZM-91dodLVE6UG" aria-label="TikTok">👍</a>
+        </div>
+      </div>
+    </div>
+    <div class="container copyright">© <span id="year"></span> FASA GAZELLES. All rights reserved.</div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    (function(){
+      function open(title,desc,img){
+        document.getElementById('spot-title').textContent = title;
+        document.getElementById('spot-desc').textContent = desc;
+        const im = document.getElementById('spot-image');
+        im.src = img; im.alt = title;
+        document.getElementById('spot-modal').style.display = 'flex';
+      }
+      function close(){ document.getElementById('spot-modal').style.display = 'none'; }
+      document.getElementById('spot-close').addEventListener('click', close);
+      document.getElementById('spot-modal').addEventListener('click', function(e){ if(e.target.id==='spot-modal') close(); });
+      document.querySelectorAll('.hotspot').forEach(btn=>{
+        btn.addEventListener('click', function(){
+          open(this.dataset.spot, this.dataset.desc, this.dataset.img);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
+
