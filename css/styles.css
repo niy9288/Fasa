@@ -120,6 +120,12 @@ section h2{margin:0;font-family:var(--font-heading);color:var(--color-primary)}
   .cards{grid-template-columns:1fr 1fr}
   .stats{grid-template-columns:1fr 1fr}
 }
+@media (max-width:768px){
+  .nav{display:none}
+  .mobile-menu-btn{display:flex}
+  .site-header .bar > div:last-child .social{display:none}
+  .site-header .bar > div:last-child .cta{margin-left:0}
+}
 @media (max-width:640px){
   .nav{display:none}
   .site-footer .wrap{grid-template-columns:1fr}
