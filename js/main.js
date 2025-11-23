@@ -3,7 +3,7 @@
   const yearEl = document.getElementById('year');
   if(yearEl){ yearEl.textContent = new Date().getFullYear(); }
 
-    // Mobile menu toggle
+  // Mobile menu toggle
   const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
   const mobileNav = document.querySelector('.mobile-nav');
   const nav = document.querySelector('.nav');
@@ -39,7 +39,7 @@
       }
     });
   }
-  
+
   // Newsletter form handler with EmailJS
   const form = document.getElementById('newsletter-form');
   if(form){
@@ -97,4 +97,3 @@
     });
   }
 })();
-
