@@ -123,6 +123,7 @@ section h2{margin:0;font-family:var(--font-heading);color:var(--color-primary)}
 @media (max-width:768px){
   .nav{display:none}
   .mobile-menu-btn{display:flex}
+  .mobile-nav{display:block}
   .site-header .bar > div:last-child .social{display:none}
   .site-header .bar > div:last-child .cta{margin-left:0}
 }
