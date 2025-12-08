@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FASA GAZELLES — Content Manager</title>
+  <meta name="description" content="Admin panel to manage blog posts, events, gallery, and social media content." />
+  <link rel="icon" href="assets/favicon.ico" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .admin-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .admin-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      border-bottom: 2px solid var(--color-primary);
+      padding-bottom: 15px;
+    }
+
+    .admin-header h1 {
+      font-size: 2rem;
+      color: var(--color-primary);
+      margin: 0;
+    }
+
+    .logout-btn {
+      background: #dc3545;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: background 0.3s;
+    }
+
+    .logout-btn:hover {
+      background: #c82333;
+    }
+
+    .tabs-container {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .tab-btn {
+      padding: 12px 20px;
+      border: none;
+      background: #f5f5f5;
+      color: #333;
+      cursor: pointer;
+      font-size: 0.95rem;
+      border-radius: 6px 6px 0 0;
+      transition: all 0.3s;
+      font-weight: 500;
+    }
+
+    .tab-btn:hover {
+      background: #efefef;
+    }
+
+    .tab-btn.active {
+      background: var(--color-primary);
+      color: white;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .form-section {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: var(--shadow-md);
+      margin-bottom: 30px;
+    }
+
+    .form-section h2 {
+      color: var(--color-primary);
+      margin-top: 0;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group label {
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #333;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 0.95rem;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(46, 139, 87, 0.1);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .btn-primary {
+      background: var(--color-primary);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .btn-primary:hover {
+      background: #2d8a57;
+    }
+
+    .btn-secondary {
+      background: #6c757d;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: background 0.3s;
+    }
+
+    .btn-secondary:hover {
+      background: #5a6268;
+    }
+
+    .btn-danger {
+      background: #dc3545;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: background 0.3s;
+    }
+
+    .btn-danger:hover {
+      background: #c82333;
+    }
+
+    .items-list {
+      background: white;
+      border-radius: 10px;
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+    }
+
+    .items-list h2 {
+      background: #f5f5f5;
+      padding: 15px 25px;
+      margin: 0;
+      color: var(--color-primary);
+      border-bottom: 1px solid #ddd;
+    }
+
+    .item-card {
+      padding: 20px 25px;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .item-card:last-child {
+      border-bottom: none;
+    }
+
+    .item-info {
+      flex: 1;
+    }
+
+    .item-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #333;
+      margin: 0 0 5px 0;
+    }
+
+    .item-meta {
+      font-size: 0.85rem;
+      color: #666;
+      margin: 5px 0;
+    }
+
+    .item-preview {
+      font-size: 0.9rem;
+      color: #555;
+      margin: 10px 0 0 0;
+      max-width: 300px;
+    }
+
+    .item-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-edit {
+      background: #0d6efd;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: background 0.3s;
+    }
+
+    .btn-edit:hover {
+      background: #0b5ed7;
+    }
+
+    .empty-state {
+      padding: 40px;
+      text-align: center;
+      color: #999;
+    }
+
+    .success-message {
+      background: #d4edda;
+      color: #155724;
+      padding: 15px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      border: 1px solid #c3e6cb;
+      display: none;
+    }
+
+    .success-message.show {
+      display: block;
+      animation: slideDown 0.3s ease;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal.show {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: var(--shadow-lg);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .modal-header h2 {
+      margin: 0;
+      color: var(--color-primary);
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #999;
+    }
+
+    .close-btn:hover {
+      color: #333;
+    }
+
+    @media (max-width: 768px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .tabs-container {
+        flex-direction: column;
+      }
+
+      .tab-btn {
+        border-radius: 6px;
+      }
+
+      .item-card {
+        flex-direction: column;
+      }
+
+      .item-actions {
+        width: 100%;
+      }
+
+      .btn-group {
+        flex-direction: column;
+      }
+
+      .btn-group button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container bar">
+      <a class="logo" href="index.html" aria-label="FASA GAZELLES Home">
+        <img src="images/logo.png" alt="FASA GAZELLES Logo"
+          style="width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,var(--color-primary),var(--color-olive));position:relative;box-shadow:var(--shadow-sm)">
+        <span>FASA GAZELLES</span>
+      </a>
+      <nav class="nav" aria-label="Primary Navigation">
+        <a href="index.html">Home</a>
+        <a href="admin.html" aria-current="page">Admin</a>
+        <a href="admin.html" class="login-link" aria-label="Admin Login">🔒 Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="admin-container">
+    <div class="admin-header">
+      <h1>📊 Content Manager</h1>
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+
+    <!-- Login Form -->
+    <div id="login-container" class="form-section" style="max-width: 400px; margin: 0 auto;">
+      <h2>Admin Login</h2>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" placeholder="Enter admin password">
+      </div>
+      <button class="btn-primary" onclick="login()">Login</button>
+      <p style="text-align: center; color: #999; margin-top: 20px; font-size: 0.9rem;">
+        💡 Tip: Change the password in admin.js for security
+      </p>
+    </div>
+
+    <!-- Admin Panel (Hidden until login) -->
+    <div id="admin-panel" style="display: none;">
+      <div class="success-message" id="success-message"></div>
+
+      <div class="tabs-container">
+        <button class="tab-btn active" onclick="switchTab('blog')">📝 Blog Posts</button>
+        <button class="tab-btn" onclick="switchTab('events')">📅 Events</button>
+        <button class="tab-btn" onclick="switchTab('gallery')">🖼️ Gallery</button>
+        <button class="tab-btn" onclick="switchTab('social')">📱 Social Media</button>
+      </div>
+
+      <!-- Blog Tab -->
+      <div id="blog" class="tab-content active">
+        <div class="form-section">
+          <h2>Add New Blog Post</h2>
+          <form onsubmit="addBlogPost(event)">
+            <div class="form-group">
+              <label for="blog-title">Title:</label>
+              <input type="text" id="blog-title" required placeholder="e.g., Reading Tips for Parents">
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="blog-slug">URL Slug:</label>
+                <input type="text" id="blog-slug" required placeholder="e.g., reading-tips-parents">
+              </div>
+              <div class="form-group">
+                <label for="blog-date">Date:</label>
+                <input type="date" id="blog-date" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="blog-excerpt">Excerpt (Short summary):</label>
+              <textarea id="blog-excerpt" required placeholder="Brief description for preview"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="blog-content">Full Content:</label>
+              <textarea id="blog-content" required placeholder="Complete blog post content"></textarea>
+            </div>
+            <div class="btn-group">
+              <button type="submit" class="btn-primary">Add Blog Post</button>
+              <button type="reset" class="btn-secondary">Clear Form</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="items-list" id="blog-list">
+          <h2>All Blog Posts</h2>
+          <div id="blog-items"></div>
+        </div>
+      </div>
+
+      <!-- Events Tab -->
+      <div id="events" class="tab-content">
+        <div class="form-section">
+          <h2>Add New Event</h2>
+          <form onsubmit="addEvent(event)">
+            <div class="form-group">
+              <label for="event-title">Event Title:</label>
+              <input type="text" id="event-title" required placeholder="e.g., Story Hour: The Clever Little Fox">
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="event-category">Category:</label>
+                <select id="event-category" required>
+                  <option value="">Select a category</option>
+                  <option value="Story Hours">Story Hours</option>
+                  <option value="Art Workshops">Art Workshops</option>
+                  <option value="Movie Nights">Movie Nights</option>
+                  <option value="Educational Sessions">Educational Sessions</option>
+                  <option value="Special Events">Special Events</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="event-datetime">Date & Time:</label>
+                <input type="datetime-local" id="event-datetime" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="event-age">Age Group:</label>
+                <input type="text" id="event-age" required placeholder="e.g., 3-6, 7+, All ages">
+              </div>
+              <div class="form-group">
+                <label for="event-materials">Materials Needed:</label>
+                <input type="text" id="event-materials" placeholder="e.g., None, Watercolors provided">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="event-description">Description:</label>
+              <textarea id="event-description" required placeholder="Detailed event description"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="event-outcomes">Learning Outcomes (comma-separated):</label>
+              <input type="text" id="event-outcomes" placeholder="e.g., Listening, Imagination, Creativity">
+            </div>
+            <div class="btn-group">
+              <button type="submit" class="btn-primary">Add Event</button>
+              <button type="reset" class="btn-secondary">Clear Form</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="items-list" id="events-list">
+          <h2>All Events</h2>
+          <div id="events-items"></div>
+        </div>
+      </div>
+
+      <!-- Gallery Tab -->
+      <div id="gallery" class="tab-content">
+        <div class="form-section">
+          <h2>Add Gallery Item</h2>
+          <form onsubmit="addGalleryItem(event)">
+            <div class="form-group">
+              <label for="gallery-title">Title:</label>
+              <input type="text" id="gallery-title" required placeholder="e.g., Library View">
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="gallery-artist">Artist/Creator:</label>
+                <input type="text" id="gallery-artist" required placeholder="e.g., The Palm Tree">
+              </div>
+              <div class="form-group">
+                <label for="gallery-category">Category:</label>
+                <select id="gallery-category" required>
+                  <option value="">Select a category</option>
+                  <option value="Current Exhibits">Current Exhibits</option>
+                  <option value="Permanent Collection">Permanent Collection</option>
+                  <option value="Clothes">Clothes</option>
+                  <option value="Children's Art">Children's Art</option>
+                  <option value="Local Artists">Local Artists</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="gallery-medium">Medium:</label>
+                <input type="text" id="gallery-medium" required placeholder="e.g., Photography, Textile, Painting">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="gallery-story">Story/Description:</label>
+              <textarea id="gallery-story" required placeholder="Tell the story behind this artwork"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="gallery-image">Image Path:</label>
+              <input type="text" id="gallery-image" required placeholder="e.g., images/IMG-20251011-WA0030.png">
+            </div>
+            <div class="btn-group">
+              <button type="submit" class="btn-primary">Add Gallery Item</button>
+              <button type="reset" class="btn-secondary">Clear Form</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="items-list" id="gallery-list">
+          <h2>All Gallery Items</h2>
+          <div id="gallery-items"></div>
+        </div>
+      </div>
+
+      <!-- Social Media Tab -->
+      <div id="social" class="tab-content">
+        <div class="form-section">
+          <h2>Add Social Media Post/Link</h2>
+          <form onsubmit="addSocialMedia(event)">
+            <div class="form-group">
+              <label for="social-title">Title:</label>
+              <input type="text" id="social-title" required placeholder="e.g., Library Tour Video">
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="social-type">Type:</label>
+                <select id="social-type" required>
+                  <option value="">Select type</option>
+                  <option value="youtube">YouTube</option>
+                  <option value="tiktok">TikTok</option>
+                  <option value="instagram">Instagram</option>
+                  <option value="facebook">Facebook</option>
+                  <option value="social">General Post</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="social-date">Date:</label>
+                <input type="date" id="social-date" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="social-url">URL/Link:</label>
+              <input type="url" id="social-url" required placeholder="https://...">
+            </div>
+            <div class="form-group">
+              <label for="social-description">Description:</label>
+              <textarea id="social-description" placeholder="Brief description of the post"></textarea>
+            </div>
+            <div class="btn-group">
+              <button type="submit" class="btn-primary">Add Social Post</button>
+              <button type="reset" class="btn-secondary">Clear Form</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="items-list" id="social-list">
+          <h2>All Social Media Posts</h2>
+          <div id="social-items"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/admin.js"></script>
+</body>
+
+</html>

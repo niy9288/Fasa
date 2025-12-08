@@ -124,8 +124,22 @@
   filter?.addEventListener('change', render);
 
   // Initialize slideshows and gallery
-  fetch('data/gallery.json').then(r=>r.json()).then(list=>{ 
-    items = list; 
+  fetch('data/gallery.json').then(r=>r.json()).then(jsonList=>{ 
+    items = [...jsonList];
+    
+    // Add items from localStorage
+    try {
+      const stored = localStorage.getItem('gallery_data');
+      if(stored){
+        const storedItems = JSON.parse(stored);
+        if(Array.isArray(storedItems)){
+          items = [...items, ...storedItems];
+        }
+      }
+    } catch(e) {
+      console.log('Could not load gallery from localStorage');
+    }
+    
     render();
     
     // Library slideshow - first 4 images
@@ -149,6 +163,37 @@
       true,
       5000
     );
+  }).catch(err => {
+    // If fetch fails, try localStorage only
+    try {
+      const stored = localStorage.getItem('gallery_data');
+      if(stored){
+        items = JSON.parse(stored);
+        render();
+        
+        const libraryItems = items.slice(0, 4);
+        initSlideshow(
+          'library-slideshow',
+          'library-track',
+          'library-indicators',
+          libraryItems,
+          true,
+          5000
+        );
+        
+        const clothesItems = items.slice(4);
+        initSlideshow(
+          'clothes-slideshow',
+          'clothes-track',
+          'clothes-indicators',
+          clothesItems,
+          true,
+          5000
+        );
+      }
+    } catch(e) {
+      console.log('Could not load gallery');
+    }
   });
 })();
 

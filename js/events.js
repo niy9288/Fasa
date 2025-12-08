@@ -5,8 +5,23 @@
   const summaryEl = document.getElementById('next-event-summary');
   if(!nextEventCard) return;
 
-  fetch('data/events.json').then(r=>r.json()).then(list=>{
-    const upcoming = list
+  fetch('data/events.json').then(r=>r.json()).then(jsonList=>{
+    // Combine JSON and localStorage data
+    let allEvents = [...jsonList];
+    
+    try {
+      const stored = localStorage.getItem('events_data');
+      if(stored){
+        const storedEvents = JSON.parse(stored);
+        if(Array.isArray(storedEvents)){
+          allEvents = [...allEvents, ...storedEvents];
+        }
+      }
+    } catch(e) {
+      console.log('Could not load from localStorage');
+    }
+    
+    const upcoming = allEvents
       .map(e=>({ ...e, dateObj:new Date(e.start) }))
       .filter(e=>e.dateObj.getTime() > Date.now())
       .sort((a,b)=>a.dateObj - b.dateObj)[0];
@@ -144,6 +159,35 @@
   categorySelect?.addEventListener('change', render);
   ageSelect?.addEventListener('change', render);
 
-  fetch('data/events.json').then(r=>r.json()).then(list=>{ events = list; render(); });
+  fetch('data/events.json').then(r=>r.json()).then(jsonList=>{
+    // Start with JSON data
+    events = [...jsonList];
+    
+    // Add events from localStorage
+    try {
+      const stored = localStorage.getItem('events_data');
+      if(stored){
+        const storedEvents = JSON.parse(stored);
+        if(Array.isArray(storedEvents)){
+          events = [...events, ...storedEvents];
+        }
+      }
+    } catch(e) {
+      console.log('Could not load events from localStorage');
+    }
+    
+    render();
+  }).catch(err => {
+    // If fetch fails, try localStorage only
+    try {
+      const stored = localStorage.getItem('events_data');
+      if(stored){
+        events = JSON.parse(stored);
+        render();
+      }
+    } catch(e) {
+      console.log('Could not load events');
+    }
+  });
 })();
 

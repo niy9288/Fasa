@@ -2,16 +2,63 @@
   const list = document.getElementById('blog-list');
   const mediaList = document.getElementById('media-posts');
   
+  // Helper: Merge JSON data with localStorage data
+  function mergePostData(jsonData) {
+    let posts = [];
+    
+    // Parse JSON data
+    if(Array.isArray(jsonData)){
+      posts = jsonData.filter(p => !p.type || p.type === 'post');
+    } else {
+      posts = jsonData.posts || [];
+    }
+    
+    // Add any posts from localStorage
+    try {
+      const stored = localStorage.getItem('blog_data');
+      if(stored){
+        const storedData = JSON.parse(stored);
+        if(storedData.posts && Array.isArray(storedData.posts)){
+          posts = [...posts, ...storedData.posts];
+        }
+      }
+    } catch(e) {
+      console.log('Could not load from localStorage');
+    }
+    
+    return posts;
+  }
+  
+  function mergeMediaData(jsonData) {
+    let media = [];
+    
+    // Parse JSON data
+    if(Array.isArray(jsonData)){
+      media = jsonData.filter(p => p.type === 'youtube' || p.type === 'social');
+    } else {
+      media = jsonData.media || [];
+    }
+    
+    // Add any posts from localStorage
+    try {
+      const stored = localStorage.getItem('blog_data');
+      if(stored){
+        const storedData = JSON.parse(stored);
+        if(storedData.media && Array.isArray(storedData.media)){
+          media = [...media, ...storedData.media];
+        }
+      }
+    } catch(e) {
+      console.log('Could not load from localStorage');
+    }
+    
+    return media;
+  }
+  
   // Load regular blog posts
   if(list){
     fetch('data/blog.json').then(r=>r.json()).then(data=>{
-      // Handle both array format (old) and object format (new)
-      let posts = [];
-      if(Array.isArray(data)){
-        posts = data.filter(p => !p.type || p.type === 'post');
-      } else {
-        posts = data.posts || [];
-      }
+      let posts = mergePostData(data);
       
       list.innerHTML = '';
       posts.sort((a,b)=>new Date(b.date)-new Date(a.date)).forEach(p=>{
@@ -29,13 +76,7 @@
   // Load YouTube and social media posts
   if(mediaList){
     fetch('data/blog.json').then(r=>r.json()).then(data=>{
-      // Handle both array format (old) and object format (new)
-      let mediaPosts = [];
-      if(Array.isArray(data)){
-        mediaPosts = data.filter(p => p.type === 'youtube' || p.type === 'social');
-      } else {
-        mediaPosts = data.media || [];
-      }
+      let mediaPosts = mergeMediaData(data);
       
       mediaList.innerHTML = '';
       

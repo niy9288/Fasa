@@ -3,6 +3,43 @@
   const yearEl = document.getElementById('year');
   if(yearEl){ yearEl.textContent = new Date().getFullYear(); }
 
+  // Mobile menu toggle
+  const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+  const mobileNav = document.querySelector('.mobile-nav');
+  const nav = document.querySelector('.nav');
+  
+  if(mobileMenuBtn && nav){
+    // Clone desktop nav to mobile nav
+    if(mobileNav){
+      mobileNav.innerHTML = nav.innerHTML;
+      // Update mobile nav links to close menu on click
+      mobileNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenuBtn.classList.remove('active');
+          mobileNav.classList.remove('active');
+        });
+      });
+    }
+    
+    mobileMenuBtn.addEventListener('click', function(){
+      const isActive = this.classList.toggle('active');
+      this.setAttribute('aria-expanded', isActive);
+      if(mobileNav){
+        mobileNav.classList.toggle('active');
+      }
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e){
+      if(mobileNav && mobileNav.classList.contains('active')){
+        if(!mobileNav.contains(e.target) && !mobileMenuBtn.contains(e.target)){
+          mobileMenuBtn.classList.remove('active');
+          mobileNav.classList.remove('active');
+        }
+      }
+    });
+  }
+
   // Newsletter form handler with EmailJS
   const form = document.getElementById('newsletter-form');
   if(form){
