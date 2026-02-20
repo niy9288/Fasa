@@ -1,18 +1,5 @@
 {
-  "posts": [
-    { "slug":"reading-tips-parents","title":"Reading Tips for Parents","date":"2025-10-01","excerpt":"Simple routines to grow a love for reading.","content":"Establish a cozy routine, let kids choose, and ask open questions." },
-    { "slug":"art-project-ideas","title":"Art Project Ideas","date":"2025-09-12","excerpt":"Low-cost art ideas using household items.","content":"Try nature rubbings, cardboard sculptures, and color-mixing games." },
-    { "slug":"educational-movie-reviews","title":"Educational Movie Reviews","date":"2025-08-20","excerpt":"Films that spark curiosity.","content":"Short picks that encourage observation, empathy, and discussion." },
-    { "slug":"child-development-insights","title":"Child Development Insights","date":"2025-07-15","excerpt":"Playful learning at every stage.","content":"Balance structure with exploration; celebrate small steps." }
-  ],
   "media": [
-    {
-      "type": "youtube",
-      "title": "Library Tour Video",
-      "description": "Take a virtual tour of our beautiful library space",
-      "url":  "https://www.youtube.com/watch?v=8KuarGY84gw",
-      "date": "2025-10-15"
-    },
     {
       "type": "youtube",
       "title": "Story Hour Highlights",
