@@ -35,6 +35,8 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+  // Initialize image picker UI
+  if (typeof setupImagePicker === "function") setupImagePicker();
 });
 
 // Login function
@@ -652,4 +654,158 @@ function importData() {
   };
 
   input.click();
+}
+
+// ============ IMAGE PICKER (Drag & Drop + File Upload) ============
+let _pickedImage = null;
+
+function setupImagePicker() {
+  const openBtn = document.getElementById("open-image-picker");
+  const modal = document.getElementById("image-picker-modal");
+  const closeBtn = document.getElementById("close-image-picker");
+  const cancelBtn = document.getElementById("cancel-image-picker");
+  const confirmBtn = document.getElementById("confirm-image-picker");
+  const dropArea = document.getElementById("drop-area");
+  const fileInput = document.getElementById("image-file-input");
+
+  if (!openBtn || !modal || !dropArea || !fileInput) return;
+
+  openBtn.addEventListener("click", openImagePicker);
+  closeBtn && closeBtn.addEventListener("click", closeImagePicker);
+  cancelBtn && cancelBtn.addEventListener("click", closeImagePicker);
+  confirmBtn && confirmBtn.addEventListener("click", confirmImageSelection);
+
+  // Local upload button (outside modal)
+  const localUploadBtn = document.getElementById("upload-image-local");
+  const localFileInput = document.getElementById("gallery-image-local-input");
+  if (localUploadBtn && localFileInput) {
+    localUploadBtn.addEventListener("click", () => localFileInput.click());
+    localFileInput.addEventListener("change", (e) => {
+      const f = e.target.files && e.target.files[0];
+      if (!f) return;
+      if (!f.type || !f.type.startsWith("image/")) {
+        alert("Please select an image file.");
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = function (ev) {
+        const dataUrl = ev.target.result;
+        const galleryInput = document.getElementById("gallery-image");
+        if (galleryInput) {
+          galleryInput.value = dataUrl;
+          showSuccess("Image selected from device.");
+        }
+      };
+      reader.onerror = function () {
+        alert("Error reading file.");
+      };
+      reader.readAsDataURL(f);
+    });
+  }
+
+  // Click drop area to open file dialog
+  dropArea.addEventListener("click", () => fileInput.click());
+
+  // Drag & drop events
+  ["dragenter", "dragover"].forEach((ev) => {
+    dropArea.addEventListener(ev, (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      dropArea.style.borderColor = "#2d8a57";
+    });
+  });
+
+  ["dragleave", "drop"].forEach((ev) => {
+    dropArea.addEventListener(ev, (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      dropArea.style.borderColor = "#ddd";
+    });
+  });
+
+  dropArea.addEventListener("drop", (e) => {
+    const dt = e.dataTransfer;
+    if (!dt) return;
+    const files = dt.files;
+    if (files && files.length) {
+      handleFile(files[0]);
+    }
+  });
+
+  // File input change
+  fileInput.addEventListener("change", (e) => {
+    const f = e.target.files && e.target.files[0];
+    if (f) handleFile(f);
+  });
+}
+
+function openImagePicker() {
+  const modal = document.getElementById("image-picker-modal");
+  if (!modal) return;
+  modal.classList.add("show");
+  modal.setAttribute("aria-hidden", "false");
+  // reset previous selection
+  _pickedImage = null;
+  const preview = document.getElementById("image-preview");
+  if (preview) preview.style.display = "none";
+}
+
+function closeImagePicker() {
+  const modal = document.getElementById("image-picker-modal");
+  if (!modal) return;
+  modal.classList.remove("show");
+  modal.setAttribute("aria-hidden", "true");
+  _pickedImage = null;
+}
+
+function handleFile(file) {
+  if (!file) return;
+  if (!file.type || !file.type.startsWith("image/")) {
+    alert("Please select an image file.");
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = function (ev) {
+    const dataUrl = ev.target.result;
+    _pickedImage = {
+      name: file.name,
+      size: file.size,
+      type: file.type,
+      dataUrl: dataUrl,
+    };
+    updateImagePreview(_pickedImage);
+  };
+  reader.onerror = function () {
+    alert("Error reading file.");
+  };
+  reader.readAsDataURL(file);
+}
+
+function updateImagePreview(img) {
+  const preview = document.getElementById("image-preview");
+  const imgEl = document.getElementById("image-preview-img");
+  const nameEl = document.getElementById("image-preview-name");
+  const sizeEl = document.getElementById("image-preview-size");
+
+  if (!img || !preview || !imgEl) return;
+  imgEl.src = img.dataUrl;
+  nameEl.textContent = img.name || "Selected image";
+  sizeEl.textContent = img.size ? `${Math.round(img.size/1024)} KB` : "";
+  preview.style.display = "flex";
+}
+
+function confirmImageSelection() {
+  if (!_pickedImage || !_pickedImage.dataUrl) {
+    alert("No image selected.");
+    return;
+  }
+  const galleryInput = document.getElementById("gallery-image");
+  if (!galleryInput) return;
+
+  // Store the data URL so the gallery will display the chosen image
+  galleryInput.value = _pickedImage.dataUrl;
+
+  // Close modal
+  closeImagePicker();
 }
